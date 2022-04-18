@@ -1,4 +1,3 @@
-// contracts/MyNFT.sol
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
@@ -14,8 +13,8 @@ struct Offer {
   uint256 priceInWei;
 }
 /**
- * a fixed price marketplace
- * DO NOT USE FOR PRODUCTION!
+ * DO NOT USE IN PRODUCTION! 
+ * a fixed reserve price marketplace
  */
 contract ClosedDesert is ReentrancyGuard {
 
@@ -25,7 +24,6 @@ contract ClosedDesert is ReentrancyGuard {
   IRoyaltyEngineV1 royaltyEngineMainnet = IRoyaltyEngineV1(0x0385603ab55642cb4Dd5De3aE9e306809991804f);
 
   event OnSale(bytes32 offerHash, address indexed collection, uint256 token_id, address indexed owner);
-  event Delisted(bytes32 offerHash, address indexed collection, uint256 token_id);
   event Bought(address indexed collection, uint256 token_id, address buyer, uint256 price);
 
   function sellNFT(IERC721 collection, uint256 token_id, uint256 priceInWei) public {
@@ -39,15 +37,6 @@ contract ClosedDesert is ReentrancyGuard {
       priceInWei: priceInWei
     });
     emit OnSale(offerHash, address(collection), token_id, msg.sender);
-  }
-
-  function delist(bytes32 offerHash) public {
-    Offer memory offer = offers[offerHash];
-    require(address(offer.collection) != address(0x0), "no such offer");
-    require(IERC721(offer.collection).ownerOf(offer.token_id) == msg.sender, "only owner can delist items");
-
-    emit Delisted(offerHash, address(offer.collection), offer.token_id);
-    delete offers[offerHash];
   }
 
   function buyNft(bytes32 offerHash) public payable nonReentrant {
