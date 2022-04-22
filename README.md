@@ -14,7 +14,7 @@ mainnet fork. Try it out yourself:
 - start an instant local mainnet fork and unlock some accounts owning NFTs (seller) or having Eth on them (buyer)
 
 ```
-npx ganache --fork https://mainnet.infura.io/v3/<your-infura-key>  --unlock 0x203eAaCC0un7aDDrE22DFaCC0un7aDDrE22 --unlock 0xan07hErAaCC0un7aDDrE22DFaCC0un7aDDrE22
+npx ganache --fork https://mainnet.infura.io/v3/<your-infura-key>  --unlock 0xDFe0CB7fbC3830C4D413a552A7c707270fD5C72B --unlock 0x5E904A05033D728315dD23Bea210d17A68cA3d19
 ```
 
 - compile the contracts 
@@ -31,8 +31,8 @@ npx truffle migrate --network mainfork
 
 ```testMarketPlace.js
 const azukiNftAddress = "0xcollectionaddress";
-const sellerAddress = "0x203eAaCC0un7aDDrE22DFaCC0un7aDDrE22";
-const buyerAddress = "0xan07hErAaCC0un7aDDrE22DFaCC0un7aDDrE22";
+const sellerAddress = "0xDFe0CB7fbC3830C4D413a552A7c707270fD5C72B";
+const buyerAddress = "0x5E904A05033D728315dD23Bea210d17A68cA3d19";
 ```
 
 - run the test script
