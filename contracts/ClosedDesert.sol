@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/utils/Address.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/token/common/ERC2981.sol";
-import "./IRoyaltyEngine.sol";
+import "@manifoldxyz/royalty-registry-solidity/contracts/IRoyaltyEngineV1.sol";
 
 struct Offer {
   IERC721 collection;
